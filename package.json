@@ -6,19 +6,27 @@
 	"scripts": {
 		"start": "node dist/index.js",
 		"build": "tsc -p .",
-		"dev": "nodemon src/index.ts -w src "
+		"dev": "nodemon src/index.ts -w src ",
+		"test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.ts'"
 	},
 	"keywords": [],
 	"author": "mohammed",
 	"license": "mit",
 	"devDependencies": {
+		"@types/chai": "^4.2.16",
 		"@types/connect-redis": "0.0.16",
 		"@types/express": "^4.17.11",
+		"@types/mocha": "^8.2.2",
 		"@types/node": "^14.14.37",
 		"@types/pg": "^7.14.11",
 		"@types/redis": "^2.8.28",
+		"@types/supertest": "^2.0.11",
+		"chai": "^4.3.4",
 		"dotenv": "^8.2.0",
+		"mocha": "^8.3.2",
 		"nodemon": "^2.0.7",
+		"supertest": "^6.1.3",
+		"ts-node": "^9.1.1",
 		"typescript": "^4.2.3"
 	},
 	"dependencies": {

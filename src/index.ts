@@ -20,8 +20,10 @@ app.use((req, res, next) => {
 });
 
 app.get("/pro", (req, res) => {
-	res.send(req.session);
+	res.status(200).send(req.session);
 });
 app.listen(port, () => {
 	console.log("up and running on port " + port);
 });
+
+export default app;

@@ -8,7 +8,7 @@ async function logincontroller(
 ) {
 	const query = await pool.query("select * from users");
 	(request.session as any).userid = query.rows[0].id;
-	response.send(request.session);
+	response.status(200).send(request.session);
 	return;
 }
 
