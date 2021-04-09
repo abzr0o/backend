@@ -42,7 +42,7 @@ async function registerController(
 					const sent = emailVerfiy(
 						value.email,
 						value.username,
-						"123",
+						token,
 						(done: boolean) => {
 							if (done) {
 								response.status(200).send(request.session);

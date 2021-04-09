@@ -1,5 +1,3 @@
-import login from "./login";
-import register from "./register";
-import { authentication } from "./auth";
+import v1 from "./v1";
 
-export { login, register, authentication };
+export default v1;

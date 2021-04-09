@@ -1,15 +1,15 @@
 import express from "express";
 
-import { login, register, authentication } from "./routes";
+import { authentication } from "./routes/auth";
 import { session } from "./session";
+import v1 from "./routes";
 
 const port = process.env.PORT || 2000;
 
 const app = express();
 app.use(express.json());
 app.use(session);
-app.use(login);
-app.use(register);
+app.use(v1);
 
 app.use(authentication);
 
