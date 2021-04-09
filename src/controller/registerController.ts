@@ -29,7 +29,8 @@ async function registerController(
 					"insert into users(username ,name ,email, password) values($1, $2, $3 ,$4) returning id, username, email,verfied;",
 					[value.username, value.name, value.email, hashedPassword]
 				);
-				response.status(200).send(query.rows[0]);
+				(request.session as any).data = query.rows[0];
+				response.status(200).send(request.session);
 			} catch (err) {
 				console.log(err);
 				response.status(500).send(err);

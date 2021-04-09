@@ -12,7 +12,7 @@ const session = expressSession({
 	saveUninitialized: false,
 	resave: false,
 	name: "sessionid",
-	cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: false, secure: false },
+	cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: false },
 });
 
 export default session;
