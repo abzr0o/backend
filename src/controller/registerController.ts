@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
-import { vaild } from "../util";
+import { emailvaild, uservaild, emailVerfiy } from "../util";
 import { pool } from "../db";
 import Schema from "../schema/registerControllerSchema";
 
@@ -20,9 +21,10 @@ async function registerController(
 			name,
 			confirmPassword,
 		});
-		const isExist = await vaild(value.username);
+		const userExist = await uservaild(value.username);
+		const emailExist = await emailvaild(value.email);
 
-		if (!isExist) {
+		if (!userExist && !emailExist) {
 			try {
 				const hashedPassword = await bcrypt.hash(value.password, 12);
 				const query = await pool.query(
@@ -30,13 +32,36 @@ async function registerController(
 					[value.username, value.name, value.email, hashedPassword]
 				);
 				(request.session as any).data = query.rows[0];
-				response.status(200).send(request.session);
+
+				try {
+					const token = jwt.sign(
+						{ username: value.username, email: value.email },
+						(process.env as any).jwt,
+						{ expiresIn: "1h" }
+					);
+					const sent = emailVerfiy(
+						value.email,
+						value.username,
+						"123",
+						(done: boolean) => {
+							if (done) {
+								response.status(200).send(request.session);
+							} else {
+								response.status(500).send({ error: "something went wrong" });
+							}
+						}
+					);
+				} catch (err) {
+					console.log(err);
+				}
 			} catch (err) {
 				console.log(err);
 				response.status(500).send(err);
 			}
-		} else {
+		} else if (userExist) {
 			response.status(400).send({ error: "username is already taken" });
+		} else {
+			response.status(400).send({ error: "email is already in use" });
 		}
 	} catch (err) {
 		console.log(err);
