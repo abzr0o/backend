@@ -1,3 +1,3 @@
-import post from "./posts";
+import post from "./post";
 
 export { post };

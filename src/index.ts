@@ -3,7 +3,7 @@ import express from "express";
 import { mongodb } from "./db";
 import { authentication } from "./routes/auth";
 import { session } from "./session";
-import { v1, secureRout } from "./routes";
+import { NotSecure, secureRout } from "./routes";
 
 const port = process.env.PORT || 2000;
 
@@ -14,17 +14,14 @@ const app = express();
 app.use(express.json());
 app.use(session);
 
-//any rout that dont need auth go in v1 
-app.use(v1);
+//any rout that dont need auth go in v1
+app.use(NotSecure);
 
 //makeing sure the user is authenticated
 app.use(authentication);
 
-
 //rout thats need use to be authenticated go in secureRout
 app.use(secureRout);
-
-
 
 //listen to port
 app.listen(port, () => {

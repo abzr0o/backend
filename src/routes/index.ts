@@ -1,4 +1,4 @@
-import v1 from "./v1";
-import secureRout from "./secureRout";
+import NotSecure from "./NotSecure";
+import secureRout from "./secure";
 
-export { v1, secureRout };
+export { NotSecure, secureRout };

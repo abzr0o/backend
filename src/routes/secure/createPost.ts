@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { CreatePost } from "../controller";
+import { CreatePost } from "../../controller";
 
 const router = Router();
 

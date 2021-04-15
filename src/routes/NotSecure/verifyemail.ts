@@ -1,6 +1,6 @@
 import exprss from "express";
 
-import { verifyEmailController } from "../controller";
+import { verifyEmailController } from "../../controller";
 
 const router = exprss.Router();
 
