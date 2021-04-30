@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
-import { pool } from "../db";
+import { pool } from "../../db";
 
 async function verifyEmailController(
 	request: Request,

@@ -2,9 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import { emailvaild, uservaild, emailVerfiy } from "../util";
-import { pool } from "../db";
-import Schema from "../schema/registerControllerSchema";
+import { emailvaild, uservaild, emailVerfiy } from "../../util";
+import { pool } from "../../db";
+import Schema from "../../schema/registerControllerSchema";
 
 async function registerController(
 	request: Request,

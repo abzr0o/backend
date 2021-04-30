@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-import { post } from "../schema/mongoose";
+import { post } from "../../schema/mongoose";
 
 const Like = async (
 	request: Request,

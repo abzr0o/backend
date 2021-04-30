@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { post } from "../schema/mongoose";
+import { post } from "../../schema/mongoose";
 const CreatePost = async (
 	request: Request,
 	response: Response,

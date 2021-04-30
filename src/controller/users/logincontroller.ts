@@ -1,8 +1,8 @@
 import e, { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
 
-import pool from "../db/db";
-import schema from "../schema/loginControllerSchema";
+import pool from "../../db/db";
+import schema from "../../schema/loginControllerSchema";
 
 async function logincontroller(
 	request: Request,

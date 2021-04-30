@@ -1,9 +1,11 @@
-import logincontroller from "./logincontroller";
-import authenticationController from "./authenticationController";
-import registerController from "./registerController";
-import verifyEmailController from "./verifyEmailController";
-import CreatePost from "./CreatePostController";
-import likePost from "./likePostController";
+import logincontroller from "./users/logincontroller";
+import authenticationController from "./users/authenticationController";
+import registerController from "./users/registerController";
+import verifyEmailController from "./users/verifyEmailController";
+import CreatePost from "./post/CreatePostController";
+import likePost from "./post/likePostController";
+import DeletePost from "./post/DeletePostController";
+import editPost from "./post/editPostController";
 
 export {
 	logincontroller,
@@ -12,4 +14,6 @@ export {
 	verifyEmailController,
 	CreatePost,
 	likePost,
+	DeletePost,
+	editPost,
 };
