@@ -5,20 +5,21 @@ const CreatePost = async (
 	response: Response,
 	next: NextFunction
 ) => {
-	const { cookie, data } = request.session as any;
+	const { data } = request.session as any;
 	const body = request.body;
-	const newPost = new post({
-		username: data.username,
-		createdAt: new Date().toISOString(),
-		body: body.data,
-	});
+
 	try {
+		const newPost = new post({
+			username: data.username,
+			createdAt: new Date().toISOString(),
+			body: body.data,
+		});
 		const Post = await newPost.save();
 		if (Post) {
 			response.status(200).end();
 		}
 	} catch (err) {
-		response.status(500).end();
+		response.status(401).send({ error: "body must not be empty" }).end();
 	}
 };
 

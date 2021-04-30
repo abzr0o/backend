@@ -6,6 +6,7 @@ import CreatePost from "./post/CreatePostController";
 import likePost from "./post/likePostController";
 import DeletePost from "./post/DeletePostController";
 import editPost from "./post/editPostController";
+import CreateComment from "./post/comments/createCommentController";
 
 export {
 	logincontroller,
@@ -16,4 +17,5 @@ export {
 	likePost,
 	DeletePost,
 	editPost,
+	CreateComment,
 };
